@@ -25,17 +25,22 @@
                 <th>ID</th>
                 <th>Username</th>
             <tr>
-                <% 
-                if(session.getAttribute("username") == null){
-                    request.getRequestDispatcher("/login.jsp").forward(request, response);
-                    return;
-                }
+                <%
+                    if (session.getAttribute("username") == null) {
+                        request.getRequestDispatcher("login.jsp").forward(request, response);
+                        return;
+                    }
                 %>   
-        <% List<User> users = (List<User>)session.getAttribute("users");
-            for(User user : users){
-              out.println("<tr><td>"+user.getId()+"</td><td>"+user.getUsername()+"</td></tr>");
-            }
-        %>
+                <% List<User> users = (List<User>) session.getAttribute("users");
+                    for (User user : users) {
+                        out.println("<tr><td>" + user.getId() + "</td><td>" + user.getUsername() + "</td></tr>");
+                    }
+                %>
+            
         </table>
+                <form action="Login" method="POST">
+                <input type="hidden" name="origin" value="logout" >
+                <input type="submit" value="Logout">
+            </form>
     </body>
 </html>

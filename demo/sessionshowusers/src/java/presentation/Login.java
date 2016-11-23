@@ -64,8 +64,17 @@ public class Login extends HttpServlet {
         }else{
             response.getWriter().print("du er ikke logget ind");
         }
+        String origin = request.getParameter("origin");
+        if(origin != null){
+            if(origin.equals("logout"))
+            logout(request);
+        }
     }
 
+    private void logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+    }
+    
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description
