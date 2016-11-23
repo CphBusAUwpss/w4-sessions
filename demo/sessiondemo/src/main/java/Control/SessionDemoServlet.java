@@ -1,4 +1,4 @@
-package view;
+package Control;
 
 import java.io.IOException;
 import java.util.Enumeration;
